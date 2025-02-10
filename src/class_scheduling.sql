@@ -16,9 +16,11 @@ SELECT
 FROM 
     class_schedule cs
 JOIN 
-    classes c ON cs.class_id = c.class_id  -- Join class schedules with classes.
+    classes c 
+        ON cs.class_id = c.class_id  -- Join class schedules with classes.
 JOIN 
-    staff s ON cs.staff_id = s.staff_id;  -- Join class schedules with staff to get instructor details.
+    staff s 
+        ON cs.staff_id = s.staff_id;  -- Join class schedules with staff to get instructor details.
 
 -- 2. Find available classes for a specific date
 -- TODO: Write a query to find available classes for a specific date
@@ -31,9 +33,11 @@ SELECT
 FROM 
     class_schedule cs
 JOIN 
-    classes c ON cs.class_id = c.class_id -- Join class schedules with class details.
+    classes c 
+        ON cs.class_id = c.class_id -- Join class schedules with class details.
 LEFT JOIN 
-    class_attendance ca ON cs.schedule_id = ca.schedule_id -- Join with attendance to count registrations.
+    class_attendance ca 
+        ON cs.schedule_id = ca.schedule_id -- Join with attendance to count registrations.
 WHERE 
     DATE(cs.start_time) = '2025-02-01' -- Filter for the specific date.
 GROUP BY 
@@ -63,9 +67,11 @@ SELECT
 FROM 
     classes c
 JOIN 
-    class_schedule cs ON c.class_id = cs.class_id -- Join classes with their schedules.
+    class_schedule cs 
+        ON c.class_id = cs.class_id -- Join classes with their schedules.
 JOIN 
-    class_attendance ca ON cs.schedule_id = ca.schedule_id -- Join schedules with attendance records.
+    class_attendance ca 
+        ON cs.schedule_id = ca.schedule_id -- Join schedules with attendance records.
 GROUP BY 
     c.class_id                  -- Group by class to count registrations.
 ORDER BY 
@@ -82,7 +88,8 @@ FROM (
     FROM 
         members m
     LEFT JOIN 
-        class_attendance ca ON m.member_id = ca.member_id -- Include members without any attendance.
+        class_attendance ca 
+            ON m.member_id = ca.member_id -- Include members without any attendance.
     GROUP BY 
         m.member_id -- Group by member to calculate attendance counts.
 ) subquery;

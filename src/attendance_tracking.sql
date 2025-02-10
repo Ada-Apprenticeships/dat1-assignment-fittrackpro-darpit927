@@ -63,6 +63,7 @@ FROM (
         location_id, visit_date -- Group by location and visit date.
 ) subquery
 JOIN 
-    locations l ON subquery.location_id = l.location_id -- Join with locations to get the location name.
+    locations l 
+        ON subquery.location_id = l.location_id -- Join with locations to get the location name.
 GROUP BY 
     l.name;                     -- Group by location name to calculate the average attendance.

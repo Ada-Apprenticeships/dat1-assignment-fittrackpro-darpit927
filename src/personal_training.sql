@@ -18,8 +18,10 @@ SELECT
 FROM 
     personal_training_sessions pt
 JOIN 
-    members m ON pt.member_id = m.member_id -- Join sessions with members.
+    members m 
+        ON pt.member_id = m.member_id -- Join sessions with members.
 JOIN 
-    staff s ON pt.staff_id = s.staff_id -- Join sessions with staff.
+    staff s 
+        ON pt.staff_id = s.staff_id -- Join sessions with staff.
 WHERE 
     s.first_name = 'Ivy' AND s.last_name = 'Irwin'; -- Filter for sessions conducted by Ivy Irwin.

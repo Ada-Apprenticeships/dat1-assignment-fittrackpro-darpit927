@@ -26,7 +26,8 @@ SELECT
 FROM 
     personal_training_sessions pt
 JOIN 
-    staff s ON pt.staff_id = s.staff_id -- Join personal training sessions with staff.
+    staff s 
+        ON pt.staff_id = s.staff_id -- Join personal training sessions with staff.
 WHERE 
     pt.session_date BETWEEN DATE('now') AND DATE('now', '+30 days') -- Filter sessions in the next 30 days.
 GROUP BY 

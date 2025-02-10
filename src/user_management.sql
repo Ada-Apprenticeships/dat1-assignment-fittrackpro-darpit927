@@ -45,7 +45,8 @@ SELECT
 FROM 
     members m
 JOIN 
-    class_attendance ca ON m.member_id = ca.member_id -- Join members with their attendance records.
+    class_attendance ca 
+        ON m.member_id = ca.member_id -- Join members with their attendance records.
 GROUP BY 
     m.member_id                 -- Group by each member to calculate their registration count.
 ORDER BY 
@@ -62,7 +63,8 @@ SELECT
 FROM 
     members m
 LEFT JOIN 
-    class_attendance ca ON m.member_id = ca.member_id -- Left join to include members without registrations.
+    class_attendance ca 
+        ON m.member_id = ca.member_id -- Left join to include members without registrations.
 GROUP BY 
     m.member_id                 -- Group by each member to calculate their registration count.
 ORDER BY 
@@ -78,4 +80,5 @@ SELECT
 FROM 
     members m
 LEFT JOIN 
-    class_attendance ca ON m.member_id = ca.member_id; -- Join members with their attendance records.
+    class_attendance ca 
+        ON m.member_id = ca.member_id; -- Join members with their attendance records.

@@ -18,7 +18,8 @@ SELECT
 FROM 
     memberships mem
 JOIN 
-    members m ON mem.member_id = m.member_id -- Join memberships with members.
+    members m 
+        ON mem.member_id = m.member_id -- Join memberships with members.
 WHERE 
     mem.status = 'Active';  -- Filter for active memberships only.
 
@@ -31,7 +32,8 @@ SELECT
 FROM 
     memberships mem
 JOIN 
-    attendance a ON mem.member_id = a.member_id -- Join memberships with attendance records.
+    attendance a 
+        ON mem.member_id = a.member_id -- Join memberships with attendance records.
 GROUP BY 
     mem.type; -- Group by membership type to calculate average visit duration.
 
@@ -46,6 +48,7 @@ SELECT
 FROM 
     memberships mem
 JOIN 
-    members m ON mem.member_id = m.member_id -- Join memberships with members.
+    members m 
+        ON mem.member_id = m.member_id -- Join memberships with members.
 WHERE 
     mem.end_date BETWEEN DATE('now') AND DATE('now', '+1 year'); -- Filter for memberships expiring within the next year.
